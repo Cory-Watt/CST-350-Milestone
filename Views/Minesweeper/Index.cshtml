@@ -34,8 +34,16 @@
                 {
                     <div class="line-break"></div>
                 }
-                <button class="game-button" type="submit" value="@Model.ElementAt(i).Id" name="buttonNumber" asp-controller="Minesweeper" asp-action="HandleButtonClick">
+            <button class="game-button" type="submit" value="@Model.ElementAt(i).Id" name="buttonNumber" asp-controller="Minesweeper" asp-action="HandleButtonClick">
+                @if (Model.ElementAt(i).Live && Model.ElementAt(i).ButtonState!=0)
+                {
+                    <img class="game-button-image" src="~/img/Bomb.png" />
+                }
+                else
+                {
                     <img class="game-button-image" src="~/img/@imageNames[Model.ElementAt(i).ButtonState]" />
+                }
+                
                 </button>
             }
         </div>

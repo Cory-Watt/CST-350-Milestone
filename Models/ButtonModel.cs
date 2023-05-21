@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int ButtonState { get; set; }
+        public bool Live { get; set; }
 
         public ButtonModel() { }
 
@@ -11,6 +12,7 @@
         {
             Id = id;
             ButtonState = buttonState;
+            Live = false;
         }
     }
 }
