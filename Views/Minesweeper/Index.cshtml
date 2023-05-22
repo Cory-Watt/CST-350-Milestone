@@ -23,7 +23,7 @@
 
 </style>
 @{
-    string[] imageNames = { "unopenedsquare.png", "num1.png", "num2.png", "num3.png", "num4.png" };
+    string[] imageNames = { "num0.png", "num1.png", "num2.png", "num3.png", "num4.png", "num5.png", "num6.png", "num7.png", "num8.png" };
 }
 <form>
     <div class="button-zone">
@@ -35,13 +35,17 @@
                     <div class="line-break"></div>
                 }
             <button class="game-button" type="submit" value="@Model.ElementAt(i).Id" name="buttonNumber" asp-controller="Minesweeper" asp-action="HandleButtonClick">
-                @if (Model.ElementAt(i).Live && Model.ElementAt(i).ButtonState!=0)
+                @if (Model.ElementAt(i).ButtonState == 0)
+                {
+                    <img class="game-button-image" src="~/img/unopenedsquare.png" />
+                }
+                else if(Model.ElementAt(i).Live)
                 {
                     <img class="game-button-image" src="~/img/Bomb.png" />
                 }
                 else
                 {
-                    <img class="game-button-image" src="~/img/@imageNames[Model.ElementAt(i).ButtonState]" />
+                    <img class="game-button-image" src="~/img/@imageNames[Model.ElementAt(i).Neighbors]" />
                 }
                 
                 </button>
