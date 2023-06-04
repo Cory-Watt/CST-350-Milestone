@@ -42,7 +42,19 @@ namespace Milestone.Controllers
             
             return View("Index", buttons);
         }
+        public IActionResult ShowOneButton(int buttonNumber)
+        {
+            buttons.ElementAt(buttonNumber).ButtonState = (buttons.ElementAt(buttonNumber).ButtonState + 1) % 4;
+            return PartialView(buttons.ElementAt(buttonNumber));
+        }
 
+        public IActionResult RightClickShowOneButton(int buttonNumber)
+        {
+            buttons.ElementAt(buttonNumber).ButtonState = 0;
+            return PartialView("ShowOneButton", buttons.ElementAt(buttonNumber));
+
+            // return PartialView(buttons.ElementAt(buttonNumber));
+        }
         //THis method will set up the board with random live members (w/ bombs)
         public void setupLiveNeighbors()
         {
